@@ -1,0 +1,10 @@
+# database configuration
+production:
+  adapter: mysql2
+  url: <%= ENV['MYSQLURL'] %>
+  database: <%= ENV['MYSQLDATABASE'] %>
+  host: <%= ENV['MYSQLHOST'] %>
+  username: <%= ENV['MYSQLUSER'] %>
+  password: <%= ENV['MYSQLPASSWORD'] %>
+  port: <%= ENV['MYSQLPORT'] %>
+  encoding: utf8mb4
