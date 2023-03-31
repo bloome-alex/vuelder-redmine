@@ -4,25 +4,24 @@ FROM redmine:latest
 # Agregar al usuario que ejecutará la aplicación
 USER redmine
 
-# Configuración de Redmine
-ENV REDMINE_DB_MYSQL=db \
-    REDMINE_DB_DATABASE=redmine \
-    REDMINE_DB_USERNAME=redmine \
-    REDMINE_DB_PASSWORD=3qJWZ8rM$&5xMxP \
-    REDMINE_SECRET_KEY_BASE=some-secret-key \
-    RAILS_ENV=production
+# Establecer las variables de entorno
+ENV MYSQL_URL="mysql://root:CF5k2Cr3Rj2tBKUdTPho@containers-us-west-197.railway.app:7876/railway" \
+    MYSQLDATABASE="railway" \
+    MYSQLHOST="containers-us-west-197.railway.app" \
+    MYSQLPASSWORD="CF5k2Cr3Rj2tBKUdTPho" \
+    MYSQLPORT="7876" \
+    MYSQLUSER="root"
 
-# Configuración de la base de datos
-RUN echo "production:" > config/database.yml \
- && echo "  adapter: mysql2" >> config/database.yml \
- && echo "  database: \${REDMINE_DB_DATABASE}" >> config/database.yml \
- && echo "  host: \${REDMINE_DB_MYSQL}" >> config/database.yml \
- && echo "  username: \${REDMINE_DB_USERNAME}" >> config/database.yml \
- && echo "  password: \${REDMINE_DB_PASSWORD}" >> config/database.yml \
- && echo "  encoding: utf8" >> config/database.yml
-
-# Instalación de plugins (opcional)
-# RUN git clone https://github.com/akiko-pusu/redmine_plugin_charts.git plugins/redmine_plugin_charts
+# Configurar la base de datos de Redmine
+RUN echo "production:" > /usr/src/redmine/config/database.yml && \
+    echo "  adapter: mysql2" >> /usr/src/redmine/config/database.yml && \
+    echo "  database: ${MYSQLDATABASE}" >> /usr/src/redmine/config/database.yml && \
+    echo "  host: ${MYSQLHOST}" >> /usr/src/redmine/config/database.yml && \
+    echo "  port: ${MYSQLPORT}" >> /usr/src/redmine/config/database.yml && \
+    echo "  username: ${MYSQLUSER}" >> /usr/src/redmine/config/database.yml && \
+    echo "  password: ${MYSQLPASSWORD}" >> /usr/src/redmine/config/database.yml && \
+    echo "  encoding: utf8" >> /usr/src/redmine/config/database.yml && \
+    echo "  collation: utf8_general_ci" >> /usr/src/redmine/config/database.yml
 
 # Exponer el puerto en el que escucha la aplicación
 EXPOSE 3000
