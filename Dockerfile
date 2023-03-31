@@ -28,3 +28,5 @@ EXPOSE 3000
 
 # Comando que se ejecutará al iniciar el contenedor
 CMD ["rails", "server", "-b", "0.0.0.0"]
+
+RUN git clone https://github.com/makotokw/redmine-theme-gitmike.git /usr/src/redmine/public/theme
