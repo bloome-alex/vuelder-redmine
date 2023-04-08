@@ -4,6 +4,15 @@ FROM redmine:latest
 # Agregar al usuario que ejecutará la aplicación
 USER redmine
 
+# Establecer las variables de entorno
+ENV MYSQL_URL="mysql://root:bbiGC2aC2HLquQJrOTWS@containers-us-west-186.railway.app:5994/railway" \
+    MYSQLDATABASE="railway" \
+    MYSQLHOST="containers-us-west-186.railway.app" \
+    MYSQLPASSWORD="bbiGC2aC2HLquQJrOTWS" \
+    MYSQLPORT="5994" \
+    MYSQLUSER="root"
+
+
 # Configurar la base de datos de Redmine
 RUN echo "production:" > /usr/src/redmine/config/database.yml && \
     echo "  adapter: mysql2" >> /usr/src/redmine/config/database.yml && \
