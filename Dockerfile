@@ -13,7 +13,7 @@ ENV MYSQL_URL="mysql://root:bbiGC2aC2HLquQJrOTWS@containers-us-west-186.railway.
     MYSQLUSER="root"
 
 # tema
-COPY /gitmike /usr/src/redmine/public/themes
+COPY gitmike /usr/src/redmine/public/themes/gitmike/
 
 # Configurar la base de datos de Redmine
 RUN echo "production:" > /usr/src/redmine/config/database.yml && \
