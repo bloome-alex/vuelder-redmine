@@ -5,11 +5,11 @@ FROM redmine:latest
 USER redmine
 
 # Establecer las variables de entorno
-ENV MYSQL_URL="mysql://root:CF5k2Cr3Rj2tBKUdTPho@containers-us-west-197.railway.app:7876/railway" \
+ENV MYSQL_URL="mysql://root:bbiGC2aC2HLquQJrOTWS@containers-us-west-186.railway.app:5994/railway" \
     MYSQLDATABASE="railway" \
-    MYSQLHOST="containers-us-west-197.railway.app" \
-    MYSQLPASSWORD="CF5k2Cr3Rj2tBKUdTPho" \
-    MYSQLPORT="7876" \
+    MYSQLHOST="containers-us-west-186.railway.app" \
+    MYSQLPASSWORD="bbiGC2aC2HLquQJrOTWS" \
+    MYSQLPORT="5994" \
     MYSQLUSER="root"
 
 # tema
