@@ -12,6 +12,9 @@ ENV MYSQL_URL="mysql://root:CF5k2Cr3Rj2tBKUdTPho@containers-us-west-197.railway.
     MYSQLPORT="7876" \
     MYSQLUSER="root"
 
+# tema
+RUN git clone https://github.com/makotokw/redmine-theme-gitmike.git /usr/src/redmine/public/theme
+
 # Configurar la base de datos de Redmine
 RUN echo "production:" > /usr/src/redmine/config/database.yml && \
     echo "  adapter: mysql2" >> /usr/src/redmine/config/database.yml && \
@@ -28,5 +31,3 @@ EXPOSE 3000
 
 # Comando que se ejecutará al iniciar el contenedor
 CMD ["rails", "server", "-b", "0.0.0.0"]
-
-RUN git clone https://github.com/makotokw/redmine-theme-gitmike.git /usr/src/redmine/public/theme
